@@ -12,7 +12,7 @@ Uma ferramenta de orquestração de containers
 - Kubectl: Cliente de linha de comando para o Kubernetes
 
 #### Minikube
-O  [Minikube]([https://link-url-here.org](https://docs.altinity.com/altinitykubernetesoperator/kubernetesinstallguide/minikubeonlinux/)) é uma ferramenta que facilita a execução local de clusters Kubernetes em um único nó para desenvolvimento e teste. Os drivers do Minikube são componentes que permitem sua execução em diferentes ambientes, como VirtualBox, VMware, Hyper-V e **Docker**, fornecendo uma camada de abstração para interagir com a infraestrutura subjacente.
+O  [Minikube]([https://link-url-here.org](https://docs.altinity.com/altinitykubernetesoperator/kubernetesinstallguide/minikubeonlinux/) é uma ferramenta que facilita a execução local de clusters Kubernetes em um único nó para desenvolvimento e teste. Os drivers do Minikube são componentes que permitem sua execução em diferentes ambientes, como VirtualBox, VMware, Hyper-V e **Docker**, fornecendo uma camada de abstração para interagir com a infraestrutura subjacente.
 
 Para inicializar o Minikube vamos utilizar o comando: ``` minikube start --driver=<DRIVER> ```
 - Onde o driver vai depender de como foi sua instalação das dependências
