@@ -18,3 +18,18 @@ Para inicializar o Minikube vamos utilizar o comando: ``` minikube start --drive
 - Onde o driver vai depender de como foi sua instalação das dependências
 - Você pode usar como driver: virtualbox, hyperv e docker
 - Podemos testar o Minikube com: ```minikube status ```
+
+Para stopar o Minikube vamos utilizar o comando : ``` minikube stop```
+
+Para acessar ao dashboard do Kubernetes (Minikube) : ```minibuke dashboard --url```
+- Nele podemos ver todo o detalhamento de nosso projeto: serviços, pods e etc.
+
+
+#### Deployment
+
+- Com o Deployment criamos nosso serviço que vai rodar nos Pods
+- Definimos uma imagem e um nome, para posteriormente ser replicado entre os servidores
+- A partir da criação do deployment teremos containers rodando
+- Precisamos de uma imagem no Hub do Docker, para gerar um Deployment
+
+
