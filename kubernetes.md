@@ -24,6 +24,8 @@ Para stopar o Minikube vamos utilizar o comando : ``` minikube stop```
 Para acessar ao dashboard do Kubernetes (Minikube) : ```minibuke dashboard --url```
 - Nele podemos ver todo o detalhamento de nosso projeto: serviços, pods e etc.
 
+O comando ```kubectl config view``` é usado para exibir a configuração do cliente Kubernetes. Ele mostra informações sobre os clusters, contextos e usuários configurados no arquivo de configuração do Kubernetes, que geralmente está localizado em ~/.kube/config.
+
 
 #### Deployment
 
