@@ -20,8 +20,6 @@ Para inicializar o Minikube vamos utilizar o comando: ``` minikube start --drive
 - Você pode usar como driver: virtualbox, hyperv e docker
 - Podemos testar o Minikube com: ```minikube status ```
 
-<br>
-
 Para stopar o Minikube vamos utilizar o comando : ``` minikube stop```
 
 <br>
