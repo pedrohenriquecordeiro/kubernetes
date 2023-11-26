@@ -1,9 +1,9 @@
-#### O que é Kubernetes ?
+### O que é Kubernetes ?
 Uma ferramenta de orquestração de containers
 - Permite a criação de múltiplos containers em um cluster
 - Gerencia serviços, garantindo que as aplicações sejam executadas sempre da mesma forma
 
-#### Fundamentos
+### Fundamentos
 - Control Plane: servidor onde ocorre o gerenciamento do controle dos processos dos Nodes
 - Nodes: máquinas que são gerenciadas pelo Control Plane (workers do docker swarm)
 - Deployment: a execução de uma imagem/projeto em um Pod (docker run)
@@ -11,7 +11,7 @@ Uma ferramenta de orquestração de containers
 - Services: serviços que expõe os Pods ao mundo externo
 - Kubectl: Cliente de linha de comando para o Kubernetes
 
-#### Minikube
+### Minikube
 O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesinstallguide/minikubeonlinux/) é uma ferramenta que facilita a execução local de clusters Kubernetes em um único nó para desenvolvimento e teste. Os drivers do Minikube são componentes que permitem sua execução em diferentes ambientes, como VirtualBox, VMware, Hyper-V e **Docker**, fornecendo uma camada de abstração para interagir com a infraestrutura subjacente.
 
 
@@ -32,7 +32,7 @@ Para acessar ao dashboard do Kubernetes (Minikube) : ```minikube dashboard --url
 O comando ```kubectl config view``` é usado para exibir a configuração do cliente Kubernetes. Ele mostra informações sobre os clusters, contextos e usuários configurados no arquivo de configuração do Kubernetes, que geralmente está localizado em ~/.kube/config.
 
 
-#### Deployment
+### Deployment
 
 - Com o Deployment criamos nosso serviço que vai rodar nos Pods
 - Definimos uma imagem e um nome, para posteriormente ser replicado entre os servidores
@@ -49,7 +49,7 @@ Para checar se o Deployment foi criado corretamente:
 - ```kubectl describe deployment <nome-do-deployment>```(Obtem mais detalhes do Deployment)
 - Para deletar um Deployment : ```kubectl delete deployment <nome-do-deployment>```
 
-#### Pod
+### Pod
 Um Pod no Kubernetes é a menor unidade executável na plataforma. Ele é uma abstração que representa um grupo de um ou mais contêineres compartilhando armazenamento e rede, e que são colocados e escalonados juntos em um nó do cluster. Os contêineres dentro de um Pod geralmente se comunicam e compartilham recursos. O conceito de Pod facilita a implantação e gerenciamento de aplicações compostas por múltiplos contêineres interdependentes.
 
 Para verificar os Pods (onde os containers realmente são executados) utilizamos: 
@@ -59,7 +59,7 @@ Para verificar os Pods (onde os containers realmente são executados) utilizamos
 - Para obter logs de um pod : ```kubectl logs <nome-do-pod>```
 
 
-#### Service
+### Service
 Um **service** é um recurso que define um conjunto lógico de pods e uma política por meio da qual eles **podem ser acessados**. 
 Ele fornece uma abstração para os pods subjacentes, permitindo que outros serviços ou usuários se comuniquem com eles de maneira consistente, independentemente de sua localização exata na infraestrutura.
 
@@ -76,10 +76,11 @@ As aplicações do Kubernetes não tem conexão com o mundo externo, por isso pr
 
 Para criar um serviço e expor nossos Pods devemos utilizar o comando: ```kubectl expose deployment <nome-do-deployment> --type=<tipo> --port=<porta> --target-port=<porta>```
 - Colocamos o nome do Deployment já criado
-- --port: Este argumento especifica a porta no serviço. Ou seja, os clientes que se conectam ao serviço usarão esta porta.
-- --target-port: Este argumento especifica a porta para a qual o tráfego será direcionado nos pods do deployment. Se os pods estiverem escutando em uma porta diferente (por exemplo, 8080), você deve configurar isso para direcionar corretamente o tráfego.
+- --port :  Este argumento especifica a porta no serviço. Ou seja, os clientes que se conectam ao serviço usarão esta porta.
+- --target-port :  Este argumento especifica a porta para a qual o tráfego será direcionado nos pods do deployment. Se os pods estiverem escutando em uma porta diferente (por exemplo, 8080), você deve configurar isso para direcionar corretamente o tráfego.
 
 Detalhes de um Serviço Específico:```kubectl describe service <nome-do-servico>```
+
 Excluir um Serviço:``` kubectl delete service <nome-do-servico> ```
 
 
