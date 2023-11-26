@@ -79,9 +79,9 @@ Para criar um serviço e expor nossos Pods devemos utilizar o comando: ```kubect
 - --port :  Este argumento especifica a porta no serviço. Ou seja, os clientes que se conectam ao serviço usarão esta porta.
 - --target-port :  Este argumento especifica a porta para a qual o tráfego será direcionado nos pods do deployment. Se os pods estiverem escutando em uma porta diferente (por exemplo, 8080), você deve configurar isso para direcionar corretamente o tráfego.
 
-Detalhes de um Serviço Específico:```kubectl describe service <nome-do-servico>```
-
-Excluir um Serviço:``` kubectl delete service <nome-do-servico> ```
+- Listar Serviços: ```kubectl get services```
+- Detalhes de um Serviço Específico:```kubectl describe service <nome-do-servico>```
+- Excluir um Serviço:``` kubectl delete service <nome-do-servico> ```
 
 
 
