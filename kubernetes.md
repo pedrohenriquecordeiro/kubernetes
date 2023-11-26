@@ -15,16 +15,16 @@ Uma ferramenta de orquestração de containers
 O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesinstallguide/minikubeonlinux/) é uma ferramenta que facilita a execução local de clusters Kubernetes em um único nó para desenvolvimento e teste. Os drivers do Minikube são componentes que permitem sua execução em diferentes ambientes, como VirtualBox, VMware, Hyper-V e **Docker**, fornecendo uma camada de abstração para interagir com a infraestrutura subjacente.
 
 
-Para inicializar o Minikube vamos utilizar o comando: ``` minikube start --driver=<DRIVER> ```
+Para inicializar o Minikube vamos utilizar o comando: ```minikube start --driver=<driver>```
 - Onde o driver vai depender de como foi sua instalação das dependências
-- Você pode usar como driver: virtualbox, hyperv e docker
+- Você pode usar como driver: virtualbox, hyperv e *docker*
 - Podemos testar o Minikube com: ```minikube status ```
 
-Para stopar o Minikube vamos utilizar o comando : ``` minikube stop```
+Para stopar o Minikube vamos utilizar o comando : ```minikube stop```
 
 <br>
 
-Para acessar ao dashboard do Kubernetes (Minikube) : ```minibuke dashboard --url```
+Para acessar ao dashboard do Kubernetes (Minikube) : ```minikube dashboard --url```
 - Nele podemos ver todo o detalhamento de nosso projeto: serviços, pods e etc.
 
 <br>
@@ -45,8 +45,8 @@ Para rodar um projeto no Kubernetes:
 - Esse faz com que o projeto passe a ser orquestrado pelo Kubernetes
 
 Para checar se o Deployment foi criado corretamente:
-- ```kubectl get deployments``` (Verifica o Deployment)
-- ```kubectl describe deployment <nome-do-deployment>``` (Obtem mais detalhes do Deployment)
+- ```kubectl get deployments```(Verifica o Deployment)
+- ```kubectl describe deployment <nome-do-deployment>```(Obtem mais detalhes do Deployment)
 - Para deletar um Deployment : ```kubectl delete deployment <nome-do-deployment>```
 
 #### Pod
@@ -57,6 +57,26 @@ Para verificar os Pods (onde os containers realmente são executados) utilizamos
 - E para saber mais detalhes : ```kubectl describe pod <nome-do-pod>```
 - Para deletar um pod : ```kubectl delete pod <nome-do-pod>```
 - Para obter logs de um pod : ```kubectl logs <nome-do-pod>```
+
+
+#### Service
+Um **service** é um recurso que define um conjunto lógico de pods e uma política por meio da qual eles **podem ser acessados**. 
+Ele fornece uma abstração para os pods subjacentes, permitindo que outros serviços ou usuários se comuniquem com eles de maneira consistente, independentemente de sua localização exata na infraestrutura.
+
+Existem diferentes tipos de serviços no Kubernetes, incluindo:
+
+- ClusterIP: Expõe o serviço em um IP interno do cluster. É acessível apenas de dentro do cluster.
+- NodePort: Expõe o serviço em um ponto fixo em cada nó do cluster. O serviço é acessível externamente usando o IP do nó e a porta designada.
+- LoadBalancer: Provisionando um balanceador de carga externo para encaminhar o tráfego para o serviço.
+- ExternalName: Mapeia o serviço para um nome externo (por exemplo, um registro DNS externo).
+
+As aplicações do Kubernetes não tem conexão com o mundo externo, por isso precisamos criar um Service, que é o que possibilita **expor os Pods**. Isso acontece pois os Pods são criados para serem destruídos e perderem tudo, ou seja, os dados gerados neles também são apagados. Então o Service é uma entidade separada dos Pods, que expõe eles a uma rede.
+
+<br>
+
+Para criar um serviço e expor nossos Pods devemos utilizar o comando: ```kubectl expose deployment <nome-do-deployment> --type=<tipo> --port=<porta>```
+- Colocamos o nome do Deployment já criado
+- Uma porta para o serviço ser consumido (deve concidir com a porta do containner)
 
 
 
