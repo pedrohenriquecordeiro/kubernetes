@@ -1,13 +1,13 @@
 FROM python:3
 
-RUN apt-get update -y && apt-get install -y python3-pip python-dev-is-python3
+RUN apt-get update -y && apt-get install -y python3-pip python3-dev
 
-WORKDIR /app
+WORKDIR /APP
 
-RUN pip install Flask
+RUN pip3 install Flask
 
 COPY . .
 
 EXPOSE 5000
 
-CMD ["python","./app.py"]
+CMD [ "python3","./app.py" ]
