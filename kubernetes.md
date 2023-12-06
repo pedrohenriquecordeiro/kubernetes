@@ -15,9 +15,9 @@ Uma ferramenta de orquestração de containers
 O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesinstallguide/minikubeonlinux/) é uma ferramenta que facilita a execução local de clusters Kubernetes em um único nó para desenvolvimento e teste. Os drivers do Minikube são componentes que permitem sua execução em diferentes ambientes, como VirtualBox, VMware, Hyper-V e **Docker**, fornecendo uma camada de abstração para interagir com a infraestrutura subjacente.
 
 
-Para inicializar o Minikube vamos utilizar o comando: ```minikube start --driver=<driver>```
-- Onde o driver vai depender de como foi sua instalação das dependências
-- Você pode usar como driver: virtualbox, hyperv e *docker*
+- Para inicializar o Minikube vamos utilizar o comando: ```minikube start --driver=<driver>```
+  - Onde o driver vai depender de como foi sua instalação das dependências
+  - Você pode usar como driver: virtualbox, hyperv e *docker*
 - Podemos testar o Minikube com: ```minikube status```
 - Para parar o Minikube vamos utilizar o comando : ```minikube stop```
 
