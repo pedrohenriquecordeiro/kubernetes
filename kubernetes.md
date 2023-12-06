@@ -19,11 +19,8 @@ Para inicializar o Minikube vamos utilizar o comando: ```minikube start --driver
 - Onde o driver vai depender de como foi sua instalação das dependências
 - Você pode usar como driver: virtualbox, hyperv e *docker*
 - Podemos testar o Minikube com: ```minikube status```
-
-Para stopar o Minikube vamos utilizar o comando : ```minikube stop```
-
+- Para parar o Minikube vamos utilizar o comando : ```minikube stop```
 <br>
-
 Para acessar ao dashboard do Kubernetes (Minikube) : ```minikube dashboard --url```
 - Nele podemos ver todo o detalhamento de nosso projeto: serviços, pods e etc.
 
@@ -79,9 +76,14 @@ Para criar um serviço e expor nossos Pods devemos utilizar o comando: ```kubect
 - --port :  Este argumento especifica a porta no serviço. Ou seja, os clientes que se conectam ao serviço usarão esta porta.
 - --target-port :  Este argumento especifica a porta para a qual o tráfego será direcionado nos pods do deployment. Se os pods estiverem escutando em uma porta diferente (por exemplo, 8080), você deve configurar isso para direcionar corretamente o tráfego.
 
+------------------
 - Listar Serviços: ```kubectl get services```
 - Detalhes de um Serviço Específico:```kubectl describe service <nome-do-servico>```
-- Excluir um Serviço:``` kubectl delete service <nome-do-servico> ```
+- Excluir um Serviço:```kubectl delete service <nome-do-servico> ```
+
+<br>
+Se você usar o **minikube**, após a criação do service será precisa solicitar o minikube para expor um ip de acesso vinculado ao Service.
+```minikube service <nome-service>```
 
 
 
