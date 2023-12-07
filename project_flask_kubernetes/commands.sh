@@ -35,4 +35,6 @@ kubectl get services
 minikube service page-test
 minikube tunnel
 
+kubectl logs -f <pod-id>
+
 curl http://192.168.49.2:30257 # url do service
