@@ -34,3 +34,5 @@ kubectl expose deployment page-test --type=LoadBalancer --port=5000
 kubectl get services
 minikube service page-test
 minikube tunnel
+
+curl http://192.168.49.2:30257 # url do service
