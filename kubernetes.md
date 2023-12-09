@@ -91,6 +91,7 @@ As aplicações do Kubernetes não tem conexão com o mundo externo, por isso pr
 - Excluir um Serviço:```kubectl delete service service/<nome-do-servico> ```
 
 ✅
+
 Após criar o service no kubernetes, devemos criar o serviço dentro do servidor do **minikube**:```minikube service <nome-service>```
 
 Para listar os serviços dentro do cluster do Minikube: ```minikube service list```
