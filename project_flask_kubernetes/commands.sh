@@ -5,7 +5,8 @@ curl -LO 'https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl' &&
 curl -LO "https://dl.k8s.io/v1.22.0/bin/linux/amd64/kubectl.sha256" &&
 echo "$(<kubectl.sha256) kubectl" | sha256sum --check &&
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl &&
-kubectl version &&
+kubectl version
+
 sudo apt-get update &&
 sudo apt-get install -y ca-certificates curl gnupg lsb-release &&
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg &&
