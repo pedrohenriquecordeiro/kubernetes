@@ -53,7 +53,7 @@ Para isso usamos o comando : ``` kubectl set image deployment/<nome_deployment> 
 
   * Note que devemos fazer o push da nova imagem para o docker hub com uma **nova tag** (para indicar nova versão)
   
-  * Para descobrir o nome do container use: ```kubectl describe pod <nome_pod> | grep Image:```
+  * Para descobrir o nome da imagem a ser substituida use: ```kubectl describe pod <nome_pod> | grep Image:```
 
 ## Pod
 Um Pod no Kubernetes é a menor unidade executável na plataforma. Ele é uma abstração que representa um grupo de um ou mais contêineres compartilhando armazenamento e rede, e que são colocados e escalonados juntos em um nó do cluster. Os contêineres dentro de um Pod geralmente se comunicam e compartilham recursos. O conceito de Pod facilita a implantação e gerenciamento de aplicações compostas por múltiplos contêineres interdependentes.
