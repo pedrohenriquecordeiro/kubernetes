@@ -96,8 +96,8 @@ As aplicações do Kubernetes não tem conexão com o mundo externo, por isso pr
 
     
 - Listar Serviços: ```kubectl get services```
-- Detalhes de um Serviço Específico:```kubectl describe service service/<nome-do-servico>```
-- Excluir um Serviço:```kubectl delete service service/<nome-do-servico> ```
+- Detalhes de um Serviço Específico:```kubectl describe service <nome-do-servico>```
+- Excluir um Serviço:```kubectl delete service <nome-do-servico> ```
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
