@@ -21,11 +21,11 @@ O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesins
 - Podemos testar o Minikube com: ```minikube status```
 - Para **parar** o Minikube vamos utilizar o comando : ```minikube stop```
 
-
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 - Para acessar ao dashboard do Kubernetes (Minikube) : ```minikube dashboard --url```
   - Nele podemos ver todo o detalhamento de nosso projeto: serviços, pods e etc.
 
-    
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖ 
 - O comando ```kubectl config view``` é usado para exibir a configuração do cliente Kubernetes. Ele mostra informações sobre os clusters, contextos e usuários configurados no arquivo de configuração do Kubernetes, que geralmente está localizado em ~/.kube/config.
 
 
@@ -40,12 +40,20 @@ Para rodar um projeto no Kubernetes:
 - Vamos precisar de um **Deployment**, que é como submetemos os containers das aplicações aos Pods
 - O comando é: ```kubectl create deployment <nome_deployment> --image=<nome_imagem>```
 - Esse faz com que o projeto passe a ser orquestrado pelo Kubernetes
-
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 Para checar se o Deployment foi criado corretamente:
 - ```kubectl get deployments```(Verifica o Deployment)
 - ```kubectl describe deployment <nome-do-deployment>```(Obtem mais detalhes do Deployment)
 - Para deletar um Deployment : ```kubectl delete deployment <nome-do-deployment>```
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
+Para criar novas replicas (pods) devemos usar o comando (pode ser usado para diminuir o numero de replicas também):
+```
+kubectl scale deployment/<nome> --replicas=<numero>
+```
+Para acompanhar os status dos pods in live use o comando: ```kubectl get pods --watch``` ou ```kubectl describe  deployment page-test | grep Replicas:```
+Para checar o número de replicas: ```kubectl get rs```
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
 Podemos **atualizar a imagem do deployment**, isso pode ser necessário caso seja necessário corrigir algum erro ou adicionar uma nova feature a aplicação.
 
@@ -64,12 +72,7 @@ Para verificar os Pods (onde os containers realmente são executados) utilizamos
 - Para deletar um pod : ```kubectl delete pod <nome-do-pod>```
 - Para obter logs de um pod : ```kubectl logs <nome-do-pod>```
 
-Para criar novas replicas devemos usar o comando (pode ser usado para diminuir o numero de replicas também):
-```
-kubectl scale deployment/<nome> --replicas=<numero>
-```
-Para acompanhar os status dos pods in live use o comando: ```kubectl get pods --watch```
-Para checar o número de replicas: ```kubectl get rs```
+
 
 
 ## Service
