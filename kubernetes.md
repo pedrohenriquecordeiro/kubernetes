@@ -38,7 +38,7 @@ O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesins
 
 Para rodar um projeto no Kubernetes: 
 - Vamos precisar de um **Deployment**, que é como submetemos os containers das aplicações aos Pods
-- O comando é: ```kubectl create deployment <nome> --image=<image>```
+- O comando é: ```kubectl create deployment <nome_deployment> --image=<nome_imagem>```
 - Esse faz com que o projeto passe a ser orquestrado pelo Kubernetes
 
 Para checar se o Deployment foi criado corretamente:
@@ -49,11 +49,11 @@ Para checar se o Deployment foi criado corretamente:
 
 Podemos **atualizar a imagem do deployment**, isso pode ser necessário caso seja necessário corrigir algum erro ou adicionar uma nova feature a aplicação.
 
-Para isso usamos o comando : ``` kubectl set image deployment/<nome_deployment> <nome_container_pod>=<nome_tag_nova_imagem>```
+Para isso usamos o comando : ``` kubectl set image deployment/<nome_deployment> <nome_antiga_imagem>=<nome_tag_nova_imagem>```
 
-  ⏺️Note que devemos fazer o push da nova imagem para o docker hub com uma **nova tag** (para indicar nova versão)
+  * Note que devemos fazer o push da nova imagem para o docker hub com uma **nova tag** (para indicar nova versão)
   
-  ⏺️Para descobrir o nome do container use: ```kubectl describe pod <nome_pod> | grep Image:```
+  * Para descobrir o nome do container use: ```kubectl describe pod <nome_pod> | grep Image:```
 
 ## Pod
 Um Pod no Kubernetes é a menor unidade executável na plataforma. Ele é uma abstração que representa um grupo de um ou mais contêineres compartilhando armazenamento e rede, e que são colocados e escalonados juntos em um nó do cluster. Os contêineres dentro de um Pod geralmente se comunicam e compartilham recursos. O conceito de Pod facilita a implantação e gerenciamento de aplicações compostas por múltiplos contêineres interdependentes.
