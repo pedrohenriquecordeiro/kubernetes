@@ -24,6 +24,8 @@ O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesins
 
 - Para acessar ao dashboard do Kubernetes (Minikube) : ```minikube dashboard --url```
   - Nele podemos ver todo o detalhamento de nosso projeto: serviços, pods e etc.
+
+    
 - O comando ```kubectl config view``` é usado para exibir a configuração do cliente Kubernetes. Ele mostra informações sobre os clusters, contextos e usuários configurados no arquivo de configuração do Kubernetes, que geralmente está localizado em ~/.kube/config.
 
 
@@ -53,11 +55,12 @@ Para verificar os Pods (onde os containers realmente são executados) utilizamos
 - Para deletar um pod : ```kubectl delete pod <nome-do-pod>```
 - Para obter logs de um pod : ```kubectl logs <nome-do-pod>```
 
-Para criar novas replicas devemos usar o comando:
+Para criar novas replicas devemos usar o comando (pode ser usado para diminuir o numero de replicas também):
 ```
 kubectl scale deployment/<nome> --replicas=<numero>
 ```
 Para acompanhar os status dos pods in live use o comando: ```kubectl get pods --watch```
+Para checar o número de replicas: ```kubectl get rs```
 
 
 ## Service
@@ -93,5 +96,5 @@ Se você usar o **minikube**, após a criação do service será precisa solicit
 minikube service <nome-service>
 ```
 
-
+Para encerrar a exposição do ip de acesso usamos : ```minikube stop <nome-service>```
 
