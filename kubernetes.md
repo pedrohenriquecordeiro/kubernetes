@@ -57,10 +57,7 @@ Para criar novas replicas devemos usar o comando:
 ```
 kubectl scale deployment/<nome> --replicas=<numero>
 ```
-Para acompanhar os status dos pods in live use o comando:
-```
-kubectl get pods --watch
-```
+Para acompanhar os status dos pods in live use o comando: ```kubectl get pods --watch```
 
 
 ## Service
