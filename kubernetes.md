@@ -42,6 +42,7 @@ Para rodar um projeto no Kubernetes:
 - Esse faz com que o projeto passe a ser orquestrado pelo Kubernetes
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
 Para checar se o Deployment foi criado corretamente:
 - ```kubectl get deployments```(Verifica o Deployment)
 - ```kubectl describe deployment <nome-do-deployment>```(Obtem mais detalhes do Deployment)
