@@ -67,6 +67,16 @@ Para isso usamos o comando : ``` kubectl set image deployment/<nome_deployment> 
   
   * Para descobrir o nome da <nome_antiga_imagem> user: ```kubectl describe deployment <nome_deployment> | grep Image:```
 
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+Podemos **desfazer alteração** realizadas no deployment
+
+- Para desfazer uma alteração utilizamos uma ação conhecida como rollback;
+- O comando para debugar uma alteração é: ```kubectl rollout status deployment/<nome_deployment>```
+  - Com ele e com o ```kubectl get pods```, podemos identificar problemas
+- Para voltar a alteração utilizamos: ```kubectl rollout undo deployment/<nome_deployment>```
+
+
 ## Pod
 Um Pod no Kubernetes é a menor unidade executável na plataforma. Ele é uma abstração que representa um grupo de um ou mais contêineres compartilhando armazenamento e rede, e que são colocados e escalonados juntos em um nó do cluster. Os contêineres dentro de um Pod geralmente se comunicam e compartilham recursos. O conceito de Pod facilita a implantação e gerenciamento de aplicações compostas por múltiplos contêineres interdependentes.
 
