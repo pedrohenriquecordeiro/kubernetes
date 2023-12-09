@@ -29,7 +29,7 @@ O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesins
 - O comando ```kubectl config view``` é usado para exibir a configuração do cliente Kubernetes. Ele mostra informações sobre os clusters, contextos e usuários configurados no arquivo de configuração do Kubernetes, que geralmente está localizado em ~/.kube/config.
 
 
-### Deployment
+## Deployment
 
 - Com o Deployment criamos nosso serviço que vai rodar nos Pods
 - Definimos uma imagem e um nome, para posteriormente ser replicado entre os servidores
