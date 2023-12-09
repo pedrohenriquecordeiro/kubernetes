@@ -48,8 +48,11 @@ Para checar se o Deployment foi criado corretamente:
 
 
 Podemos atualizar a imagem do deployment, isso pode ser necessário caso seja necessário corrigir algum erro ou adicionar uma nova feature a aplicação.
+
 Para isso usamos o comando : ``` kubectl set image deployment/<nome_deployment> <nome_container_pod>=<nome_tag_nova_imagem>```
+
   Note que devemos fazer o push da nova imagem para o docker hub com uma **nova tag** (para indicar nova versão)
+  
   Para descobrir o nome do container use: ```kubectl describe pod <nome_pod> | grep Image:```
 
 ## Pod
