@@ -19,7 +19,7 @@ O  [Minikube](https://docs.altinity.com/altinitykubernetesoperator/kubernetesins
   - Onde o driver vai depender de como foi sua instalação das dependências
   - Você pode usar como driver: virtualbox, hyperv e *docker*
 - Podemos testar o Minikube com: ```minikube status```
-- Para parar o Minikube vamos utilizar o comando : ```minikube stop```
+- Para **parar** o Minikube vamos utilizar o comando : ```minikube stop```
 
 
 - Para acessar ao dashboard do Kubernetes (Minikube) : ```minikube dashboard --url```
@@ -96,5 +96,5 @@ Se você usar o **minikube**, após a criação do service será precisa solicit
 minikube service <nome-service>
 ```
 
-Para encerrar a exposição do ip de acesso usamos : ```minikube stop <nome-service>```
+Para listar os serviços dentro do cluster do Minikube: ```minikube service list```
 
