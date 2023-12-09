@@ -95,11 +95,10 @@ As aplicações do Kubernetes não tem conexão com o mundo externo, por isso pr
 
 - Para criar um serviço e expor nossos Pods devemos utilizar o comando:
   ```
-    kubectl expose deployment <nome-do-deployment> --type=<tipo> --port=<porta> --target-port=<porta>
+    kubectl expose deployment <nome-do-deployment> --type=<tipo> --port=<porta>
   ```
   - Colocamos o nome do Deployment já criado
   - --port :  Este argumento especifica a porta no serviço. Ou seja, os clientes que se conectam ao serviço usarão esta porta.
-  - --target-port :  Este argumento especifica a porta para a qual o tráfego será direcionado nos pods do deployment. Se os pods estiverem escutando em uma porta diferente (por exemplo, 8080), você deve configurar isso para direcionar corretamente o tráfego.
 
     
 - Listar Serviços: ```kubectl get services```
