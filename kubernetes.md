@@ -82,8 +82,10 @@ As aplicações do Kubernetes não tem conexão com o mundo externo, por isso pr
 - Excluir um Serviço:```kubectl delete service service/<nome-do-servico> ```
 
 
-Se você usar o **minikube**, após a criação do service será precisa solicitar o minikube para expor um ip de acesso vinculado ao Service.
-```minikube service <nome-service>```
+Se você usar o **minikube**, após a criação do service será precisa solicitar o minikube para expor um ip de acesso vinculado ao Service:
+```
+minikube service <nome-service>
+```
 
 
 
