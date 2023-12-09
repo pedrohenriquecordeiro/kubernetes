@@ -44,7 +44,7 @@ Para checar se o Deployment foi criado corretamente:
 - ```kubectl describe deployment <nome-do-deployment>```(Obtem mais detalhes do Deployment)
 - Para deletar um Deployment : ```kubectl delete deployment <nome-do-deployment>```
 
-### Pod
+## Pod
 Um Pod no Kubernetes é a menor unidade executável na plataforma. Ele é uma abstração que representa um grupo de um ou mais contêineres compartilhando armazenamento e rede, e que são colocados e escalonados juntos em um nó do cluster. Os contêineres dentro de um Pod geralmente se comunicam e compartilham recursos. O conceito de Pod facilita a implantação e gerenciamento de aplicações compostas por múltiplos contêineres interdependentes.
 
 Para verificar os Pods (onde os containers realmente são executados) utilizamos: 
@@ -53,8 +53,17 @@ Para verificar os Pods (onde os containers realmente são executados) utilizamos
 - Para deletar um pod : ```kubectl delete pod <nome-do-pod>```
 - Para obter logs de um pod : ```kubectl logs <nome-do-pod>```
 
+Para criar novas replicas devemos usar o comando:
+```
+kubectl scale deployment/<nome> --replicas=<numero>
+```
+Para acompanhar os status dos pods in live use o comando:
+```
+kubectl get pods --watch
+```
 
-### Service
+
+## Service
 Um **service** é um recurso que define um conjunto lógico de pods e uma política por meio da qual eles **podem ser acessados**. 
 Ele fornece uma abstração para os pods subjacentes, permitindo que outros serviços ou usuários se comuniquem com eles de maneira consistente, independentemente de sua localização exata na infraestrutura.
 
