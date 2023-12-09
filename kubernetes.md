@@ -40,13 +40,13 @@ Para rodar um projeto no Kubernetes:
 - Vamos precisar de um **Deployment**, que é como submetemos os containers das aplicações aos Pods
 - O comando é: ```kubectl create deployment <nome_deployment> --image=<nome_imagem>```
 - Esse faz com que o projeto passe a ser orquestrado pelo Kubernetes
-- 
+
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 Para checar se o Deployment foi criado corretamente:
 - ```kubectl get deployments```(Verifica o Deployment)
 - ```kubectl describe deployment <nome-do-deployment>```(Obtem mais detalhes do Deployment)
 - Para deletar um Deployment : ```kubectl delete deployment <nome-do-deployment>```
-- 
+
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
 Para criar novas replicas (pods) devemos usar o comando (pode ser usado para diminuir o numero de replicas também):
