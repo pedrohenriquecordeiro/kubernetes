@@ -67,7 +67,6 @@ Existem diferentes tipos de serviços no Kubernetes, incluindo:
 
 As aplicações do Kubernetes não tem conexão com o mundo externo, por isso precisamos criar um Service, que é o que possibilita **expor os Pods**. Isso acontece pois os Pods são criados para serem destruídos e perderem tudo, ou seja, os dados gerados neles também são apagados. Então o Service é uma entidade separada dos Pods, que expõe eles a uma rede.
 
-<br>
 
 - Para criar um serviço e expor nossos Pods devemos utilizar o comando:
   ```
@@ -76,6 +75,8 @@ As aplicações do Kubernetes não tem conexão com o mundo externo, por isso pr
   - Colocamos o nome do Deployment já criado
   - --port :  Este argumento especifica a porta no serviço. Ou seja, os clientes que se conectam ao serviço usarão esta porta.
   - --target-port :  Este argumento especifica a porta para a qual o tráfego será direcionado nos pods do deployment. Se os pods estiverem escutando em uma porta diferente (por exemplo, 8080), você deve configurar isso para direcionar corretamente o tráfego.
+
+    
 - Listar Serviços: ```kubectl get services```
 - Detalhes de um Serviço Específico:```kubectl describe service service/<nome-do-servico>```
 - Excluir um Serviço:```kubectl delete service service/<nome-do-servico> ```
