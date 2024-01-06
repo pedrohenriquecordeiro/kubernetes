@@ -1,0 +1,8 @@
+Host 34.41.200.144
+  HostName 34.41.200.144
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile C:\Users\pjesus\.ssh\google_compute_engine
+  User pjesus
+
