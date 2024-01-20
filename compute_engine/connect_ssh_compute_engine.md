@@ -1,4 +1,5 @@
 1 - Install GCP CLI
+
 2 - Generate SSH keys - to do this use ``` gcloud compute ssh --project=PROJECT_ID --zone=ZONE VM_NAME ``` 
 
    By default, gcloud expects keys to be located at the following paths:
