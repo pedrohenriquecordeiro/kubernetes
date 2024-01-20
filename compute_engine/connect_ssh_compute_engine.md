@@ -7,7 +7,7 @@
    By default, gcloud expects keys to be located at the following paths:
    
    * $HOME/.ssh/google_compute_engine – private key
-   * $HOME/.ssh/google_compute_engine.pub – public key
+   * $HOME/.ssh/google_compute_engine.pub – public key  (adiciona essa chave na instancia)
 
 4 - Create config file
 
