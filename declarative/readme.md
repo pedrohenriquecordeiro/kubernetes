@@ -9,4 +9,5 @@ O **modo declarativo** é guiado por um arquivo yaml.
 
 
 Com o arquivo .yaml criado podemos executar o Deployment : ```kubectl apply -f file.yaml```
+
 Para o Deployment : ```kubectl delete -f file.yaml```
