@@ -1,0 +1,51 @@
+---
+# Versão da API do Kubernetes e tipo de recurso (Service)
+apiVersion: v1
+
+# Tipo de recurso (Service)
+kind: Service
+
+# Metadados para o serviço, incluindo o nome
+metadata:
+  name: flask-service
+
+# Especificações para o serviço
+spec:
+  # Seletor para determinar quais pods serão incluídos no serviço
+  selector:
+    app: flask-app # !!!! aqui ocorre o link entre o Service criado aqui com o Deployment
+
+  # Definição das portas para o serviço
+  ports:
+    - protocol: 'TCP'     # Protocolo utilizado (TCP)
+      port: 5000           # Porta exposta no serviço
+      targetPort: 5000     # Porta do pod de destino
+
+  # Tipo de serviço, neste caso, LoadBalancer
+  type: LoadBalancer
+---
+# Definindo a versão da API do Kubernetes e o tipo de recurso como Deployment
+apiVersion: apps/v1
+kind: Deployment
+
+# Metadados para o Deployment, incluindo o nome do deployment
+metadata:
+  name: flask-app-deployment
+
+# Especificações para o Deployment, como o número de réplicas e o seletor
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: flask-app
+
+  # Template para os pods gerados pelo Deployment
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      # Especificações do pod, incluindo os containers que serão executados
+      containers:
+        - name: flask
+          image: pedrojjesus/flask-kubernetes-project:2
