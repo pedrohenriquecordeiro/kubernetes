@@ -1,6 +1,6 @@
 O **modo declarativo** é guiado por um arquivo yaml.
 
-### Chaves mais utilizadas
+**Chaves mais utilizadas**
  - apiVersion: versão utilizada da ferramenta
  - kind: tipo do arquivo (Deployment, Service)
  - metadata: descrever algum objeto, inserindo chaves como name
