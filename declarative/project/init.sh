@@ -10,6 +10,13 @@ kubectl get deployments
 kubectl apply -f project/file-service.yaml &&
 kubectl get services
 
+### ou
+
+### cria o deployment e o service em um comando
+# kubectl apply -f project/file-deployment-service.yaml &&
+# kubectl get deployments &&
+# kubectl get services
+
 ## expoe o service no servido minikube
 minikube service page-test &&
 minikube tunnel
