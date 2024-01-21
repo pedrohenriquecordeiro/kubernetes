@@ -7,7 +7,7 @@ O **modo declarativo** é guiado por um arquivo yaml.
  - replicas: número de réplicas de Nodes/Pods
  - containers: definir as especificações de containers como: nome e imagem
 
-
+-------
 Com o arquivo .yaml criado podemos executar o Deployment : ```kubectl apply -f file.yaml```
 
 Para o Deployment : ```kubectl delete -f file.yaml```
