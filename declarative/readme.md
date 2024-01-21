@@ -21,3 +21,9 @@ Para stopar o Deployment e/ou o Service usamos o comando : ```kubectl delete -f 
 3. Alterar no arquivo de Deployment para apontar para nova imagem
 4. Executar o apply apenas para o Deployment
 5. Atualizado !!
+
+### Deployment e Services em um unico Arquivo
+- Dentro do arquivo .yaml a separação de objetos é feita com o : **---**
+- Desta forma podemos criar mais de um objeto dentro do mesmo arquivo .yaml, desde que os trechos de codigo seja separados por **---**
+  
+Nota : Uma boa prática é colocar o service antes do deployment
