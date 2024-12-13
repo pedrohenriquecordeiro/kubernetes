@@ -82,32 +82,14 @@ Os nós de trabalho são onde as aplicações realmente rodam. Cada nó possui:
 
 **Como os Componentes Funcionam Juntos**
 
-1.  **Interação do Usuário**:
+Os componentes do Kubernetes trabalham de forma integrada para garantir que o estado desejado do cluster seja mantido e que as aplicações funcionem corretamente. 
 
--  O usuário submete uma configuração (exemplo: um deployment) para o API Server utilizando ferramentas como kubectl.
+O processo começa quando o usuário submete uma configuração, como um deployment, ao API Server por meio de ferramentas como kubectl. O API Server valida a solicitação e a armazena no etcd, que age como o banco de dados central do cluster. 
 
-2.  **Armazenamento do Estado**:
+O Scheduler avalia os recursos disponíveis e distribui as cargas de trabalho (pods) para os nós de trabalho de forma otimizada, levando em consideração restrições e políticas configuradas. Em cada nó, o Kubelet é responsável por gerenciar os pods atribuídos, garantindo que os containers definidos estejam em execução conforme especificado, comunicando-se continuamente com o API Server para relatar o status. 
 
--  O API Server valida a solicitação e armazena o estado desejado no etcd.
+O Kube-Proxy gerencia as regras de rede e assegura que a comunicação entre os pods, serviços e usuários externos ocorra sem problemas, enquanto o Controller Manager monitora e ajusta o estado do cluster conforme necessário, como recriar pods em caso de falhas. 
 
-3.  **Escalonamento**:
-
--  O scheduler distribui a carga de trabalho (pods) entre os nós disponíveis, considerando recursos e políticas.
-
-4.  **Execução**:
-
--  O kubelet no nó de trabalho designado inicia os pods utilizando o container runtime.
-
-5.  **Rede**:
-
--  O kube-proxy garante a conectividade entre pods e também com serviços externos.
-
-6.  **Monitoramento e Ajustes**:
-
--  Os controladores monitoram o estado atual do cluster e realizam ajustes para alinhar com o estado desejado, como recriar pods falhos.
-
-7.  **Integração com Nuvem**:
-
--  O Cloud Controller Manager gerencia recursos específicos de provedores de nuvem, como balanceadores de carga e armazenamento.
+Adicionalmente, o Cloud Controller Manager lida com as integrações específicas de provedores de nuvem, como a criação de balanceadores de carga ou volumes de armazenamento. Essa coordenação contínua, monitorada por controladores e sustentada por componentes altamente distribuídos e resilientes, garante que o Kubernetes seja capaz de oferecer uma plataforma confiável, escalável e eficiente para aplicações modernas em containers.
 
 Essa arquitetura integrada garante que o Kubernetes seja uma plataforma robusta para orquestração de containers, com alta disponibilidade, escalabilidade e eficiência no uso dos recursos.
