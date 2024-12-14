@@ -14,7 +14,7 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  Gerencia solicitações feitas via API REST para manipular recursos, como pods, serviços e deployments.
 
--  Comunica-se com outros componentes, como o etcd e os nós de trabalho.
+-  Comunica-se com outros componentes, como o etcd e com os Worker Nodes.
 
 #### etcd
 
@@ -24,7 +24,7 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 #### Scheduler (kube-scheduler)
 
--  Responsável por alocar pods nos nós de trabalho, considerando restrições e recursos disponíveis.
+-  Responsável por alocar pods nos Worker Nodes, considerando restrições e recursos disponíveis.
 
 -  Garante que os recursos do cluster sejam utilizados de maneira eficiente.
 
@@ -32,7 +32,7 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  Gerencia diversos controladores que monitoram e mantêm o estado do cluster. Exemplos incluem:
 
--  **Node Controller**: Verifica o estado de saúde dos nós.
+-  **Node Controller**: Verifica o estado dos nós.
 
 -  **Replication Controller**: Garante que o número necessário de réplicas dos pods esteja em execução.
 
@@ -44,15 +44,15 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  Mantém a lógica de nuvem separada do núcleo do Kubernetes.
 
-### 2\.Worker Nodes (Nós de Trabalho)
+### 2\.Worker Nodes (Worker Nodes)
 
-Os nós de trabalho são onde as aplicações realmente rodam. Cada nó possui:
+Os Worker Nodes são onde as aplicações realmente rodam. Cada nó possui:
 
 #### Kubelet
 
 -  Um agente que funciona em cada nó de trabalho.
 
--  Garante que os containers especificados nos pods estejam funcionando conforme planejado.
+-  Garante que os containers especificados nos pods estejam funcionando conforme especificado.
 
 -  Comunica-se com o API Server para receber instruções e enviar atualizações de status.
 
@@ -74,7 +74,7 @@ Os nós de trabalho são onde as aplicações realmente rodam. Cada nó possui:
 
 -  Facilita a interface entre Kubernetes e diferentes plataformas de containers.
 
-### 3\. Rede do Cluster
+### 3\. Network do Cluster
 
 -  **Comunicação entre Pods**: Kubernetes garante que os pods possam se comunicar entre si, independentemente do nó onde estão alocados.
 
@@ -86,9 +86,9 @@ Os nós de trabalho são onde as aplicações realmente rodam. Cada nó possui:
 
 Os componentes do Kubernetes trabalham de forma integrada para garantir que o estado desejado do cluster seja mantido e que as aplicações funcionem corretamente. 
 
-O processo começa quando o usuário submete uma configuração, como um deployment, ao API Server por meio de ferramentas como kubectl. O API Server valida a solicitação e a armazena no etcd, que age como o banco de dados central do cluster. 
+O processo começa quando o usuário submete uma configuração, como um deployment, ao API Server por meio de ferramentas como o kubectl. O API Server valida a solicitação e a armazena no etcd, que age como o banco de dados central do cluster. 
 
-O Scheduler avalia os recursos disponíveis e distribui as cargas de trabalho (pods) para os nós de trabalho de forma otimizada, levando em consideração restrições e políticas configuradas. Em cada nó, o Kubelet é responsável por gerenciar os pods atribuídos, garantindo que os containers definidos estejam em execução conforme especificado, comunicando-se continuamente com o API Server para relatar o status. 
+O Scheduler avalia os recursos disponíveis e distribui as cargas de trabalho (pods) para os Worker Nodes de forma otimizada, levando em consideração restrições e políticas configuradas. Em cada nó, o Kubelet é responsável por gerenciar os pods atribuídos, garantindo que os containers definidos estejam em execução conforme especificado, comunicando-se continuamente com o API Server para relatar o status. 
 
 O Kube-Proxy gerencia as regras de rede e assegura que a comunicação entre os pods, serviços e usuários externos ocorra sem problemas, enquanto o Controller Manager monitora e ajusta o estado do cluster conforme necessário, como recriar pods em caso de falhas. 
 
