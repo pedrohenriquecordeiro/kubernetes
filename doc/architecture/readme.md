@@ -46,7 +46,7 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  Mantém a lógica de nuvem separada do núcleo do Kubernetes.
 
-### 2\.Worker Nodes (Worker Nodes)
+### 2\. Worker Nodes
 
 Os Worker Nodes são onde as aplicações realmente rodam. Cada nó possui:
 
