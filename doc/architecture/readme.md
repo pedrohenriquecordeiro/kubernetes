@@ -4,7 +4,7 @@
 
 A arquitetura do Kubernetes é composta por diversos elementos que trabalham juntos para gerenciar e orquestrar containers de forma eficiente. A seguir, detalharemos os principais componentes e como eles interagem para garantir o funcionamento adequado do cluster.
 
-<img src="kubernetes-cluster-architecture.png" alt="" width="50%">
+<img src="kubernetes-cluster-architecture.png" alt="" width="75%">
 
 ### 1\. Control Plane
 
