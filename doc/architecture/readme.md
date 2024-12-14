@@ -1,6 +1,6 @@
 
 
-## Arquitetura do Kubernetes**
+## Arquitetura do Kubernetes
 
 A arquitetura do Kubernetes é composta por diversos elementos que trabalham juntos para gerenciar e orquestrar containers de forma eficiente. A seguir, detalharemos os principais componentes e como eles interagem para garantir o funcionamento adequado do cluster.
 
@@ -28,7 +28,7 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  Garante que os recursos do cluster sejam utilizados de maneira eficiente.
 
-**d. Controller Manager (kube-controller-manager)**
+#### Controller Manager (kube-controller-manager)
 
 -  Gerencia diversos controladores que monitoram e mantêm o estado do cluster. Exemplos incluem:
 
@@ -38,17 +38,17 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  **Endpoints Controller**: Atualiza os endpoints utilizados pelos serviços.
 
-**e. Cloud Controller Manager**
+#### Cloud Controller Manager
 
 -  Gerencia a interação do Kubernetes com provedores de nuvem (exemplo: criação de balanceadores de carga e volumes de armazenamento).
 
 -  Mantém a lógica de nuvem separada do núcleo do Kubernetes.
 
-**2\. Worker Nodes (Nós de Trabalho)**
+### 2\.Worker Nodes (Nós de Trabalho)
 
 Os nós de trabalho são onde as aplicações realmente rodam. Cada nó possui:
 
-**a. Kubelet**
+#### Kubelet
 
 -  Um agente que funciona em cada nó de trabalho.
 
@@ -56,25 +56,25 @@ Os nós de trabalho são onde as aplicações realmente rodam. Cada nó possui:
 
 -  Comunica-se com o API Server para receber instruções e enviar atualizações de status.
 
-**b. Kube-Proxy**
+#### Kube-Proxy
 
 -  Gerencia as regras de rede em cada nó para permitir a comunicação entre pods e serviços.
 
 -  Responsável pelo roteamento de tráfego dentro e fora do cluster.
 
-**c. Pods**
+#### Pods
 
 -  A menor unidade implantável no Kubernetes, composta por um ou mais containers.
 
 -  São gerenciados pelo kubelet e executam as cargas de trabalho.
 
-**d. Container Runtime**
+#### Container Runtime
 
 -  O runtime é responsável por executar os containers definidos nos pods. Exemplos incluem Docker, containerd e CRI-O.
 
 -  Facilita a interface entre Kubernetes e diferentes plataformas de containers.
 
-**3\. Rede do Cluster**
+### 3\. Rede do Cluster
 
 -  **Comunicação entre Pods**: Kubernetes garante que os pods possam se comunicar entre si, independentemente do nó onde estão alocados.
 
