@@ -34,7 +34,14 @@ spec:
   selector:                     # Determines which pods the ReplicaSet manages.
     matchLabels:
       apps: app                 # Matches pods with the "apps: app" label to ensure correct management.
-  replicas: 4                   # Number of pod replicas that the ReplicaSet should maintain.
+  replicas: 3                   # Number of pod replicas that the ReplicaSet should maintain.
+```
+
+```shell
+kubectl create -f replicaset.yaml
+```
+```shell
+kubectl get pods && kubectl get replicaset
 ```
 
 
