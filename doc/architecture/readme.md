@@ -1,12 +1,14 @@
-**Arquitetura do Kubernetes**
 
-A arquitetura do Kubernetes é composta por diversos elementos que trabalham juntos para gerenciar e orquestrar containers de forma eficiente. A seguir, estão detalhados os principais componentes e como eles interagem para garantir o funcionamento adequado do cluster.
 
-**1\. Control Plane (Plano de Controle)**
+## Arquitetura do Kubernetes**
 
-O plano de controle é responsável por gerenciar o cluster e assegurar que o estado desejado seja mantido. Ele inclui:
+A arquitetura do Kubernetes é composta por diversos elementos que trabalham juntos para gerenciar e orquestrar containers de forma eficiente. A seguir, detalharemos os principais componentes e como eles interagem para garantir o funcionamento adequado do cluster.
 
-**a. API Server (kube-api-server)**
+### 1\. Control Plane
+
+O Controle Plane é responsável por gerenciar o cluster e assegurar que o estado desejado seja mantido. Ele inclui:
+
+#### API Server (kube-api-server)
 
 -  Atua como o ponto de entrada principal para todas as interações com o Kubernetes.
 
@@ -14,13 +16,13 @@ O plano de controle é responsável por gerenciar o cluster e assegurar que o es
 
 -  Comunica-se com outros componentes, como o etcd e os nós de trabalho.
 
-**b. etcd**
+#### etcd
 
 -  Banco de dados distribuído que armazena o estado e as configurações do cluster.
 
 -  Contém informações como definições de recursos e metadados.
 
-**c. Scheduler (kube-scheduler)**
+#### Scheduler (kube-scheduler)
 
 -  Responsável por alocar pods nos nós de trabalho, considerando restrições e recursos disponíveis.
 
