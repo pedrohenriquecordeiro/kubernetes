@@ -84,7 +84,7 @@ Os Worker Nodes são onde as aplicações realmente rodam. Cada nó possui:
 
 -  **Ingress Controller**: Gerencia o acesso externo aos serviços por meio de protocolos HTTP/HTTPS.
 
-**Como os Componentes Funcionam Juntos**
+### Como os Componentes Funcionam Juntos
 
 Os componentes do Kubernetes trabalham de forma integrada para garantir que o estado desejado do cluster seja mantido e que as aplicações funcionem corretamente. 
 
