@@ -38,7 +38,7 @@ spec:
 ```
 
 ```shell
-kubectl create -f replicaset.yaml
+kubectl apply -f replicaset.yaml
 ```
 ```shell
 kubectl get pods && kubectl get replicaset
