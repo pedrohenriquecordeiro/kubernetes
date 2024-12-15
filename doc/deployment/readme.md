@@ -4,9 +4,9 @@ Um Deployment no Kubernetes é como um plano de ação que você cria para geren
 Na prática, o Deployment é o recurso mais comum no Kubernetes para gerenciar aplicações de forma automatizada. Ele cuida de criar e manter os pods (que são as unidades de execução dos containers) necessários para rodar sua aplicação, garantindo que tudo esteja funcionando conforme o planejado.
 
 ## Por Que Usar um Deployment?
-•	Automação: Ele automatiza o processo de criar, escalar e atualizar pods.
-•	Alta Disponibilidade: Se um pod falhar, o Deployment vai automaticamente substituí-lo por um novo.
-•	Atualizações Controladas: Ele permite atualizações graduais ou completas, garantindo que sua aplicação continue funcionando enquanto novas versões são implantadas.
+-	Automação: Ele automatiza o processo de criar, escalar e atualizar pods.
+-	Alta Disponibilidade: Se um pod falhar, o Deployment vai automaticamente substituí-lo por um novo.
+-	Atualizações Controladas: Ele permite atualizações graduais ou completas, garantindo que sua aplicação continue funcionando enquanto novas versões são implantadas.
 
 ## Como Funciona?
 ### 1.	Criação:
@@ -60,4 +60,78 @@ O Kubernetes se encarrega de criar e gerenciar os três pods necessários. Se um
 - Flexibilidade: Você pode atualizar, escalar ou até reverter para versões anteriores facilmente.
 - Simplicidade: Ele abstrai muitos detalhes complexos do Kubernetes, facilitando a gestão de aplicações.
 
-Em resumo, o Deployment é como um controlador que mantém sua aplicação em funcionamento no Kubernetes, cuidando de todos os detalhes necessários para que ela esteja sempre disponível, escalável e atualizada.
+## Estratégias de Atualização
+
+O Kubernetes permite duas principais estratégias de atualização para os Deployments:
+#### RollingUpdate (padrão):
+-	Nesta estratégia, os pods antigos são substituídos gradualmente pelos novos, garantindo que a aplicação permaneça disponível durante a transição.
+-	O comportamento é controlado por:
+  -	maxUnavailable: Determina a porcentagem ou o número máximo de pods que podem estar indisponíveis durante a atualização (padrão: 25%).
+  -	maxSurge: Define quantos pods extras podem ser criados além do número de réplicas desejadas (padrão: 25%).
+Exemplo: Para um Deployment com 4 réplicas, até 1 pod pode estar indisponível e 1 pod adicional pode ser criado para acelerar a transição.
+#### Recreate:
+-	Remove todos os pods existentes antes de criar os novos.
+-	Essa estratégia é útil quando as versões antiga e nova dos pods não podem coexistir, por exemplo, devido a conflitos de estado ou dependências exclusivas.
+-	Apesar de simples, pode causar indisponibilidade temporária durante a troca.
+
+## Rollouts e Gerenciamento de Versões
+
+Um rollout ocorre quando o Deployment aplica alterações, como a atualização da imagem de um container. O Kubernetes oferece ferramentas robustas para monitorar e gerenciar esses rollouts:
+
+```kubectl rollout status```:
+-	Monitora o progresso de um rollout em tempo real, indicando se foi concluído com sucesso ou se há problemas.
+-	
+Exemplo:
+```shell
+kubectl rollout status deployment/my-deployment
+```
+
+```kubectl rollout history```:
+
+-	Exibe o histórico de rollouts, permitindo rastrear alterações no Deployment. No entanto, ele não reflete mudanças no número de réplicas.
+  
+Exemplo:
+```shell
+kubectl rollout history deployment/my-deployment
+```
+Para detalhes de uma revisão específica:
+```shell
+kubectl rollout history deployment.apps/my-deployment --revision=1
+```
+
+-	Rollback:
+-	Caso algo dê errado, é possível reverter para uma versão anterior do Deployment usando o comando kubectl rollout undo.
+Exemplo:
+
+kubectl rollout undo deployment/my-deployment
+
+Para reverter a uma revisão específica:
+
+kubectl rollout undo deployment/my-deployment --to-revision=5
+
+
+	-	Pausar e Retomar Rollouts:
+	-	kubectl rollout pause: Pausa um rollout em andamento, permitindo que você inspecione o estado antes de concluir a atualização.
+Exemplo:
+
+kubectl rollout pause deployment/my-deployment
+
+
+	-	kubectl rollout resume: Retoma um rollout pausado, permitindo que ele continue até ser finalizado.
+Exemplo:
+
+kubectl rollout resume deployment/my-deployment
+
+Criação e Gerenciamento de Réplicas
+
+O Deployment utiliza ReplicaSets para garantir que o número desejado de pods esteja sempre em execução. Ele cria novos ReplicaSets durante atualizações e gerencia automaticamente o escalonamento ou a exclusão de pods para manter o estado desejado. Essa funcionalidade assegura que a aplicação esteja sempre disponível e pronta para lidar com mudanças na carga de trabalho.
+
+Inspeção de Recursos
+
+Para obter informações detalhadas sobre o estado de um Deployment, o comando kubectl describe é uma ferramenta essencial. Ele exibe detalhes como eventos recentes, ReplicaSets associados e status atual do Deployment.
+
+Exemplo:
+
+kubectl describe deployment/my-deployment
+
+
