@@ -45,6 +45,7 @@ spec:
   replicas: 20
 ```
 
+
 ```shell
 kubectl apply -f deployment.yaml && kubectl get all
 ```
