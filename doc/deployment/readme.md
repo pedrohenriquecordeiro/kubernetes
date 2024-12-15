@@ -18,6 +18,7 @@ Imagine que você tenha uma aplicação web e precise rodar três instâncias de
 - A imagem do container da aplicação (por exemplo, nginx:1.23).
 - O número de réplicas que quer manter (20, neste caso).
 - Estratégias de atualização, como atualizações gradativas.
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -43,6 +44,7 @@ spec:
 
   replicas: 20
 ```
+
 ```shell
 kubectl apply -f deployment.yaml && kubectl get all
 ```
