@@ -6,7 +6,11 @@ A arquitetura do Kubernetes é composta por diversos elementos que trabalham jun
 
 <img src="kubernetes-cluster-architecture.png" alt="" width="100%">
 
-### 1\. Control Plane
+### Cluster
+Um cluster é um conjunto de computadores interconectados que trabalham em conjunto para executar aplicações, compartilhar recursos e oferecer alta disponibilidade e escalabilidade. Ele combina os recursos de hardware, como CPU, memória e armazenamento, de vários maquinas para funcionar como uma única unidade lógica. No contexto do Kubernetes, o cluster é a base da sua arquitetura de orquestração, consistindo de no Control Plane centralizado e vários nós de trabalho (Worker Nodes) que executam as aplicações em containers.
+
+
+### Control Plane
 
 O Controle Plane é responsável por gerenciar o cluster e assegurar que o estado desejado seja mantido. Ele inclui:
 
@@ -46,7 +50,7 @@ O Controle Plane é responsável por gerenciar o cluster e assegurar que o estad
 
 -  Mantém a lógica de nuvem separada do núcleo do Kubernetes.
 
-### 2\. Worker Nodes
+### Worker Nodes
 
 Os Worker Nodes são onde as aplicações realmente rodam. Cada nó possui:
 
@@ -76,13 +80,6 @@ Os Worker Nodes são onde as aplicações realmente rodam. Cada nó possui:
 
 -  Facilita a interface entre Kubernetes e diferentes plataformas de containers.
 
-### 3\. Network do Cluster
-
--  **Comunicação entre Pods**: Kubernetes garante que os pods possam se comunicar entre si, independentemente do nó onde estão alocados.
-
--  **Comunicação entre Serviços**: Os serviços fornecem IPs estáveis e balanceamento de carga para acesso aos pods.
-
--  **Ingress Controller**: Gerencia o acesso externo aos serviços por meio de protocolos HTTP/HTTPS.
 
 ### Como os Componentes Funcionam Juntos
 
