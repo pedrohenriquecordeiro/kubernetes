@@ -16,7 +16,7 @@ Com um único comando, você pode aumentar ou reduzir o número de réplicas par
 ## Exemplo de Uso
 Imagine que você tenha uma aplicação web e precise rodar três instâncias dela no Kubernetes. Com um Deployment, você pode definir:
 - A imagem do container da aplicação (por exemplo, nginx:1.23).
-- O número de réplicas que quer manter (três, neste caso).
+- O número de réplicas que quer manter (20, neste caso).
 - Estratégias de atualização, como atualizações gradativas.
 ```yaml
 apiVersion: apps/v1
