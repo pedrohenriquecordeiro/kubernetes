@@ -21,9 +21,9 @@ Com um único comando, você pode aumentar ou reduzir o número de réplicas par
 ## Exemplo de Uso
 
 Imagine que você tenha uma aplicação web e precise rodar três instâncias dela no Kubernetes. Com um Deployment, você pode definir:
-•	A imagem do container da aplicação (por exemplo, nginx:1.23).
-•	O número de réplicas que quer manter (três, neste caso).
-•	Estratégias de atualização, como atualizações gradativas.
+- A imagem do container da aplicação (por exemplo, nginx:1.23).
+- O número de réplicas que quer manter (três, neste caso).
+- Estratégias de atualização, como atualizações gradativas.
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -56,8 +56,8 @@ kubectl apply -f deployment.yaml && kubectl get all
 O Kubernetes se encarrega de criar e gerenciar os três pods necessários. Se um deles falhar, ele cria outro automaticamente. Se você precisar atualizar para uma nova versão da aplicação, basta alterar o Deployment, e o Kubernetes faz o rollout da nova versão.
 
 ## Benefícios do Deployment
-•	Resiliência: Ele lida com falhas automaticamente, garantindo que sua aplicação esteja sempre disponível.
-•	Flexibilidade: Você pode atualizar, escalar ou até reverter para versões anteriores facilmente.
-•	Simplicidade: Ele abstrai muitos detalhes complexos do Kubernetes, facilitando a gestão de aplicações.
+- Resiliência: Ele lida com falhas automaticamente, garantindo que sua aplicação esteja sempre disponível.
+- Flexibilidade: Você pode atualizar, escalar ou até reverter para versões anteriores facilmente.
+- Simplicidade: Ele abstrai muitos detalhes complexos do Kubernetes, facilitando a gestão de aplicações.
 
 Em resumo, o Deployment é como um controlador que mantém sua aplicação em funcionamento no Kubernetes, cuidando de todos os detalhes necessários para que ela esteja sempre disponível, escalável e atualizada.
