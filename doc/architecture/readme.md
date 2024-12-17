@@ -2,7 +2,13 @@
 
 # Arquitetura do Kubernetes
 
-A arquitetura do Kubernetes é composta por diversos elementos que trabalham juntos para gerenciar e orquestrar containers de forma eficiente. A seguir, detalharemos os principais componentes e como eles interagem para garantir o funcionamento adequado do cluster.
+O Kubernetes é uma plataforma de código aberto que simplifica o gerenciamento de containers, garantindo que as aplicações funcionem de forma eficiente, escalável e sempre disponível. Na prática, ele funciona como um “gerenciador, que cuida de distribuir as aplicações entre diferentes máquinas (nodes), recupera serviços automaticamente quando algo falha e permite atualizações sem interrupções no sistema.
+
+Sua importância cresce principalmente em aplicações baseadas em microsserviços, onde os sistemas são divididos em pequenos componentes independentes. Gerenciar tudo manualmente seria inviável, e é aqui que o Kubernetes atua: ele automatiza tarefas como escalonamento de aplicações, alocação de recursos e organização da comunicação entre os serviços. Além disso, ele é extremamente flexível, funcionando tanto em nuvens públicas (como AWS, Google Cloud e Azure) quanto em servidores locais e em ambientes híbridos.
+
+Empresas como Google, Netflix, Spotify e Reddit usam o Kubernetes para garantir que suas aplicações suportem milhões de acessos sem falhas. A plataforma é capaz de aumentar ou reduzir os recursos automaticamente conforme a demanda, manter os serviços disponíveis mesmo quando algum componente falha e gerenciar recursos de maneira eficiente, ajudando a reduzir custos.
+
+Su arquitetura é composta por diversos elementos que atuam juntos para garantir o gerenciamento dos containers. Iremos detalhar os principais componentes e como eles interagem para garantir o funcionamento adequado.
 
 <img src="kubernetes-cluster-architecture.png" alt="" width="100%">
 
