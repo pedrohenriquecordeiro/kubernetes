@@ -117,7 +117,7 @@ metadata:
 ```shell
 kubectl apply -f namespace.yaml
 ```
-Em seguida, cada time aplica seu deployment e pod no respectivo namespace, como este exemplo para o time-dev:
+Em seguida, cada time aplica seu deployment e pod no respectivo namespace:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
