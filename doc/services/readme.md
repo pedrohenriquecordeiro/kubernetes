@@ -4,7 +4,7 @@ No Kubernetes, Services são recursos essenciais para garantir a comunicação e
 Eles abstraem a comunicação com os Pods, que possuem endereços IP não estáticos e podem ser recriados constantemente. 
 Dessa forma, os Services fornecem uma maneira confiável de acessar aplicações em execução, sem depender diretamente do IP dos Pods.
 
-<img src="service-example.png" alt="" width="50%">
+<img src="service_example.png" alt="" width="50%">
 
 # O Papel dos Services e ClusterIP
 
