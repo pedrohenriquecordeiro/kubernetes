@@ -50,15 +50,18 @@ spec:
 ````
 
 ### Entendendo os Campos do NodePort
-	1.	port (Obrigatório):
+1.	port (Obrigatório):
 Este campo define a porta interna em que o serviço estará acessível no cluster. No exemplo, o valor é 80.
-	2.	targetPort (Opcional):
+
+2.	targetPort (Opcional):
 Especifica a porta no container para onde o tráfego será redirecionado. Quando omitido, assume o mesmo valor de port.
-	3.	nodePort (Opcional):
+
+3.	nodePort (Opcional):
 Define a porta externa usada para acessar o serviço no nó do cluster. Quando omitido, o Kubernetes atribui automaticamente um valor entre 30000 e 32767.
-	4.	Comportamentos Padrão:
-	•	targetPort: Assume o valor de port caso não seja definido.
-	•	nodePort: Recebe um número aleatório dentro do intervalo permitido.
+
+4.	Comportamentos Padrão:
+- targetPort: Assume o valor de port caso não seja definido.
+- nodePort: Recebe um número aleatório dentro do intervalo permitido.
 
 ### Testando o Serviço com Minikube
 
