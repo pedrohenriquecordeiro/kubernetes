@@ -4,7 +4,7 @@ No Kubernetes, Services são recursos essenciais para garantir a comunicação e
 Eles abstraem a comunicação com os Pods, que possuem endereços IP não estáticos e podem ser recriados constantemente. 
 Dessa forma, os Services fornecem uma maneira confiável de acessar aplicações em execução, sem depender diretamente do IP dos Pods.
 
-# O Papel dos Services e ClusterIP
+## O Papel dos Services e ClusterIP
 
 ```yaml
 # Definição do Pod
@@ -50,7 +50,7 @@ Para que outros componentes do cluster acessem o servidor Tomcat no Pod web-pod,
 Este Service foi configurado com o tipo ClusterIP, que é o padrão no Kubernetes e disponibiliza a comunicação apenas dentro do cluster. 
 Assim, o frontend-service permite que qualquer Pod no cluster envie tráfego para o servidor Tomcat de forma consistente, sem precisar saber o IP atual do Pod.
 
-# Comunicação com Port e TargetPort
+### Comunicação com Port e TargetPort
 
 Os campos port e targetPort são essenciais na configuração de um Service. 
 O port é a porta exposta pelo Service, ou seja, é onde ele estará acessível para os consumidores no cluster. 
@@ -61,12 +61,12 @@ Nesse caso, o tráfego que chega na porta 80 do Service será redirecionado para
 Essa configuração permite que diferentes containers no mesmo Pod sejam acessados por meio de Services, mesmo que compartilhem o mesmo IP. 
 É um mecanismo importante para gerenciar múltiplos aplicativos em um único Pod.
 
-# Pods com IP Dinâmico e o Kube DNS
+## Pods com IP Dinâmico e o Kube DNS
 
 No Kubernetes, os Pods têm IPs dinâmicos, o que significa que, quando um Pod é recriado, ele pode receber um novo endereço IP. Isso pode causar problemas de comunicação se outros componentes dependessem diretamente do IP. É aqui que entra o servidor DNS interno do Kubernetes, conhecido como Kube DNS. Quando um Service é criado, ele recebe automaticamente um nome DNS, que resolve o IP atual dos Pods associados a ele.
 
 Por exemplo, no YAML, o frontend-service foi configurado para selecionar Pods com a label type: web-app. Mesmo que o Pod web-pod seja reiniciado e seu IP mude, o frontend-service continuará encaminhando o tráfego corretamente para ele. Isso garante uma comunicação estável e simplificada dentro do cluster.
 
-# Conclusão
+## Conclusão
 
 Os Services no Kubernetes são fundamentais para gerenciar a comunicação entre Pods e outros componentes, abstraindo a complexidade de IPs dinâmicos e múltiplos containers. No exemplo fornecido, o Service frontend-service com tipo ClusterIP permite que outros Pods no cluster acessem o servidor Tomcat no web-pod pela porta 8080, enquanto oferece uma interface consistente na porta 80. A combinação de campos como port e targetPort e o suporte do Kube DNS tornam os Services uma peça-chave na arquitetura robusta e escalável do Kubernetes.
