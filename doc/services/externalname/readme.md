@@ -6,11 +6,11 @@ Esse tipo de serviço é especialmente útil para abstrair a complexidade de con
 
 ## O que é DNS?
 
-O DNS (Domain Name System) é um sistema que traduz nomes de domínio legíveis por humanos, como db-cloudsql.google.com, para endereços IP que os computadores utilizam para comunicação, como 34.123.45.67. Ele atua como uma “agenda telefônica” da internet, facilitando a conexão entre serviços.
+O DNS (Domain Name System) é um sistema que traduz nomes de domínio legíveis por humanos, como db-cloudsql.google.com, para endereços IP que os computadores utilizam para comunicação, como 34.123.45.67. 
 
 Dois tipos importantes de registros DNS usados pelo Kubernetes são:
-	-	CNAME: Aponta um nome de domínio para outro nome de domínio.
-	-	A Record: Aponta diretamente para um endereço IP.
+- CNAME: Aponta um nome de domínio para outro nome de domínio.
+- A Record: Aponta diretamente para um endereço IP.
 
 O Kubernetes usa registros DNS no serviço ExternalName para mapear um nome interno para um domínio externo, simplificando o acesso.
 
