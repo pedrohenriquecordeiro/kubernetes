@@ -8,6 +8,9 @@ Quando você cria um serviço do tipo LoadBalancer, o Cloud Controller Manager d
 
 Esse processo automatizado simplifica a configuração, especialmente em ambientes de nuvem. Diferentemente do NodePort, que expõe o serviço em uma porta específica de cada nó, o LoadBalancer oferece um ponto de acesso mais robusto e amigável para usuários finais.
 
+![image](https://github.com/user-attachments/assets/412b07dd-a7a5-49ed-af69-eb9d52f5041a)
+
+
 ## Exemplo
 
 Abaixo está um exemplo de configuração para um serviço LoadBalancer:
