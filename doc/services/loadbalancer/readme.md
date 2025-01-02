@@ -55,7 +55,10 @@ spec:
 ```
 ### Aplicando
 
-
+```
+kubectl apply -f main.yaml
+```
+Para apagar tudo: ```kubectl delete -f main.yaml```
 
 #### Diferença entre LoadBalancer e NodePort
 - NodePort:
