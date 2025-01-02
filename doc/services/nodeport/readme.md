@@ -6,6 +6,9 @@ Vamos então entender os principais campos do NodePort, seus comportamentos padr
 
 ## Exemplo
 
+![image](https://github.com/user-attachments/assets/777814f6-bc0a-4195-bc6b-2d0a4d7dac3f)
+
+
 ```yaml
 # Criação de um namespace chamado "test"
 apiVersion: v1       # Define a versão da API utilizada (v1 é a versão para Namespaces)
