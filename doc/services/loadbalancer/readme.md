@@ -60,7 +60,7 @@ kubectl apply -f main.yaml
 ```
 Para apagar tudo: ```kubectl delete -f main.yaml```
 
-#### Diferença entre LoadBalancer e NodePort
+### Diferença entre LoadBalancer e NodePort
 - NodePort:
 	-	Exige acesso direto ao nó do cluster usando o IP e a porta específica configurada.
 	-	Não inclui balanceador de carga externo.
