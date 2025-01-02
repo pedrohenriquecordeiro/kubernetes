@@ -51,6 +51,11 @@ spec:
       targetPort: 80              # Porta no container que receberá o tráfego (opcional)
       nodePort: 30003             # Porta externa no nó (opcional; sem ela, valor aleatório seria atribuído)
 ````
+### Aplicando
+```
+kubectl apply -f main.yaml
+```
+Para apagar tudo: ```kubectl delete -f main.yaml```
 
 ### Entendendo os Campos do NodePort
 1.	port (Obrigatório):
