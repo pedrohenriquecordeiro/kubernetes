@@ -6,6 +6,14 @@ Dessa forma, os Services fornecem uma maneira confiável de acessar aplicações
 
 ## O Papel dos Services e ClusterIP
 
+O Service no Kubernetes age como um intermediário, conectando o tráfego de rede a um ou mais Pods que compartilham características comuns. 
+No YAML, vemos o Pod web-pod, que possui dois containers: um servidor Apache e um servidor Tomcat, expostos pelas portas 80 e 8080, respectivamente. 
+Esses dois containers compartilham o mesmo IP dentro do Pod, mas suas portas são distintas.
+
+Para que outros componentes do cluster acessem o servidor Tomcat no Pod web-pod, foi criado o Service chamado frontend-service. 
+Este Service foi configurado com o tipo ClusterIP, que é o padrão no Kubernetes e disponibiliza a comunicação apenas dentro do cluster. 
+Assim, o frontend-service permite que qualquer Pod no cluster envie tráfego para o servidor Tomcat de forma consistente, sem precisar saber o IP atual do Pod.
+
 ```yaml
 # Definição do Pod
 apiVersion: v1  # Versão da API utilizada para criar o recurso.
@@ -42,20 +50,14 @@ spec:
       targetPort: 8080  # Porta no container (Tomcat) que receberá o tráfego encaminhado pelo Service.
 ```
 
-O Service no Kubernetes age como um intermediário, conectando o tráfego de rede a um ou mais Pods que compartilham características comuns. 
-No YAML, vemos o Pod web-pod, que possui dois containers: um servidor Apache e um servidor Tomcat, expostos pelas portas 80 e 8080, respectivamente. 
-Esses dois containers compartilham o mesmo IP dentro do Pod, mas suas portas são distintas.
 
-Para que outros componentes do cluster acessem o servidor Tomcat no Pod web-pod, foi criado o Service chamado frontend-service. 
-Este Service foi configurado com o tipo ClusterIP, que é o padrão no Kubernetes e disponibiliza a comunicação apenas dentro do cluster. 
-Assim, o frontend-service permite que qualquer Pod no cluster envie tráfego para o servidor Tomcat de forma consistente, sem precisar saber o IP atual do Pod.
 
 ### Comunicação com Port e TargetPort
 
-Os campos port e targetPort são essenciais na configuração de um Service. 
-O port é a porta exposta pelo Service, ou seja, é onde ele estará acessível para os consumidores no cluster. 
-No YAML, o frontend-service está configurado para ouvir na porta 80. 
-Já o targetPort especifica para qual porta do container o tráfego será encaminhado. 
+Os campos **port** e **targetPort** são essenciais na configuração de um Service. 
+O **port** é a porta exposta pelo **Service**, ou seja, é onde ele estará acessível para os consumidores no cluster. 
+No YAML, o *frontend-service* está configurado para ouvir na porta 80. 
+Já o **targetPort** especifica para qual porta do container o tráfego será encaminhado. 
 Nesse caso, o tráfego que chega na porta 80 do Service será redirecionado para a porta 8080 no servidor Tomcat, dentro do web-pod.
 
 Essa configuração permite que diferentes containers no mesmo Pod sejam acessados por meio de Services, mesmo que compartilhem o mesmo IP. 
