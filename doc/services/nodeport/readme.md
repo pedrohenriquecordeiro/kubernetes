@@ -73,6 +73,9 @@ Após aplicar o YAML, você pode verificar o acesso externo ao serviço usando o
 ```
 minikube service --url frontend-service-nodeport --namespace=test
 ```
+```
+kubectl get nodes -o yaml | grep address
+```
 Este comando retorna uma URL que pode ser usada para acessar o serviço externamente. Para confirmar, execute um curl:
 ```
 curl <URL_retornada_pelo_comando>
