@@ -36,11 +36,9 @@ spec:
 ```
 
 ### Explicação
-1.	Namespace:
-O serviço é criado dentro do namespace database-services, que isola serviços relacionados a banco de dados. Isso ajuda na organização e evita conflitos com outros recursos.
-2.	Tipo do Serviço:
+1. Tipo do Serviço:
 O campo type: ExternalName indica que este serviço não gerencia Pods diretamente e serve apenas como uma referência a um serviço externo.
-3.	externalName:
+2. externalName:
 O campo externalName especifica o domínio externo (db-cloudsql.google.com) que o Kubernetes deve mapear. Esse domínio pode apontar para um serviço como um banco de dados gerenciado no Cloud SQL.
 
 #### Conceito de Serviços Sem Seletores
