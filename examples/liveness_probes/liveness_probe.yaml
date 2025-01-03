@@ -1,0 +1,42 @@
+# example case to test liveness proble
+#
+# in this case the containers is build and run in parallel with start of livenessProbe
+# here we can test the livenessProbe action 
+#
+# 1) at first the container was ok because there a folder /tmp/healthy
+# 2) but after 30 seconds was not ok because we deleted the folder /tmp/healthy
+#7
+# to see liveness probe working use : 
+# kubectl apply -f liveness_probe.yaml && kubectl get events --namespace=liveness-probe --field-selector=involvedObject.name=liveness-probe-pod -w
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: liveness-probe
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: liveness-probe-pod
+  namespace: liveness-probe
+spec: 
+  containers:
+  - name: liveness-container
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 20; rm -f /tmp/healthy; sleep 60; touch /tmp/healthy; sleep 60; rm -f /tmp/healthy; sleep 600
+    # /bin/sh -c touch /tmp/healthy; sleep 20; rm -f /tmp/healthy; sleep 60; touch /tmp/healthy; sleep 60; rm -f /tmp/healthy; sleep 600
+
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthy
+        # cat /tmp/healthy 
+        # if there not /tmp/healthy get error
+      initialDelaySeconds: 5 # wait 5 seconds to start - give time to container liveness-container build and start
+      periodSeconds: 1      # exec command at each 5 seconds
+      failureThreshold: 5    # exec command 3 times until restart container
