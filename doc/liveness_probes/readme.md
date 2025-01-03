@@ -61,6 +61,10 @@ Warning   Unhealthy   pod/liveness-probe-pod   Liveness probe failed: cat: can't
 Após 3 falhas consecutivas (definido pelo *failureThreshold*), o *kubelet reinicia o container, conforme evidenciado pelo log:
 ```
 Normal    Killing     pod/liveness-probe-pod   Container liveness-container failed liveness probe, will be restarted
+Normal    Pulling     pod/liveness-probe-pod   Pulling image "busybox"
+Normal    Pulled      pod/liveness-probe-pod   Successfully pulled image "busybox" in 358.88835ms
+Normal    Created     pod/liveness-probe-pod   Created container liveness-container
+Normal    Started     pod/liveness-probe-pod   Started container liveness-container
 ```
 
 4. Ciclo Repetido:
