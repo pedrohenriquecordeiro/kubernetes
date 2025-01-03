@@ -9,7 +9,7 @@ O liveness probe realiza verificações periódicas para determinar se o contain
 ## Exemplo Prático de Liveness Probe
 
 Vamos analisar o seguinte YAML que demonstra como configurar uma liveness probe para um container:
-```
+```yaml
 # Criação de um Namespace chamado "liveness-probe"
 apiVersion: v1                # Define a versão da API Kubernetes
 kind: Namespace               # Tipo do recurso: Namespace
