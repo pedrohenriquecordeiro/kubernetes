@@ -38,7 +38,7 @@ spec:
         - cat
         - /tmp/healthy        # Verifica se o arquivo /tmp/healthy existe
       initialDelaySeconds: 5  # Aguarda 5 segundos antes de iniciar a liveness probe
-      periodSeconds: 5        # Executa a sonda a cada 1 segundo
+      periodSeconds: 5        # Executa a sonda a cada 5 segundo
       failureThreshold: 3     # Permite 3 falhas consecutivas antes de reiniciar o container
 ````
 
