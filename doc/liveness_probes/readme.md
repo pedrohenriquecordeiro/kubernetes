@@ -45,6 +45,12 @@ spec:
 O comando executado no container foi projetado para simular um cenário onde o estado de saúde do container alterna entre saudável e não saudável, permitindo observar o comportamento do liveness probe. 
 A imagem busybox foi utilizada porque é uma imagem que fornece as ferramentas básicas necessárias para executar comandos simples de shell, tornando-a ideal para testes e demonstrações como a configuração do liveness probe.
 
+Para testar esse caso use o comando : 
+```shell
+kubectl apply -f liveness_probe.yaml && kubectl get events --namespace=liveness-probe --field-selector=involvedObject.name=liveness-probe-pod -w
+
+```
+
 ## Funcionamento do Caso de Exemplo
 1. Inicialmente Saudável:
 O container cria o arquivo ```/tmp/healthy``` assim que inicia. A liveness probe verifica a existência do arquivo usando o comando ```cat /tmp/healthy```. Enquanto o arquivo existir, a sonda será bem-sucedida.
