@@ -53,6 +53,8 @@ O container cria o arquivo ```/tmp/healthy``` assim que inicia. A liveness probe
 Após 20 segundos, o arquivo ```/tmp/healthy``` é removido pelo próprio container. A partir desse momento, a liveness probe falha, resultando em mensagens de erro como:
 ```
 Warning   Unhealthy   pod/liveness-probe-pod   Liveness probe failed: cat: can't open '/tmp/healthy': No such file or directory
+Warning   Unhealthy   pod/liveness-probe-pod   Liveness probe failed: cat: can't open '/tmp/healthy': No such file or directory
+Warning   Unhealthy   pod/liveness-probe-pod   Liveness probe failed: cat: can't open '/tmp/healthy': No such file or directory
 ```
 
 3. Reinício do Container:
