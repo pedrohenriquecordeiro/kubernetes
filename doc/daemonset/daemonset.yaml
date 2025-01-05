@@ -1,24 +1,22 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: DaemonSet
 metadata:
-  name: frontend-replicaset
+  name: daemonset
   labels:
     app: frontend
-
 spec:
   template:
     metadata:
-      name: pod-webserver
+      name: pod-web-server
       labels:
         apps: app
         tier: frontend
     spec:
       containers:
-       - name: container
-         image: nginx
-         
+      - name: container-nginx
+        image: nginx
+      nodeSelector:
+        daemonset: sd1
   selector:
     matchLabels:
       apps: app
-
-  replicas: 2

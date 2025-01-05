@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset
+  labels:
+    app: frontend
+spec:
+  template:
+    metadata:
+      name: pod-web-server
+      labels:
+        apps: app
+        tier: frontend
+    spec:
+      containers:
+      - name: container-nginx
+        image: nginx
+      nodeName: minikube-m02 #  node name ( nodeName is only for targeting a single node )
+  selector:
+    matchLabels:
+      apps: app
