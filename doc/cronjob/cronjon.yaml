@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob
+spec:
+  schedule: "* * * * *"
+  failedJobsHistoryLimit : 10
+  successfulJobsHistoryLimit: 10
+  suspend: true
+  jobTemplate:
+    spec:
+      completions: 1
+      completionMode: "NonIndexed"
+      parallelism: 1
+      activeDeadlineSeconds: 10
+      backoffLimit: 2
+      template:
+        spec:
+          containers:
+          - name: job-container-busybox
+            image: busybox
+            command:
+            - "bin/sh"
+            - "-c"
+            - date
+          restartPolicy: Never

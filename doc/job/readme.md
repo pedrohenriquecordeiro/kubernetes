@@ -11,7 +11,7 @@ kind: Job                          # Especifica que o recurso criado será um Jo
 metadata:                          # Metadados associados ao Job.
   name: my-job                     # Nome do Job.
 spec:                              # Especificações do Job.
-  completions: 5                   # Número total de execuções do Job para serem concluídas com sucesso.
+  completions: 5                   # Número de execuções do Job. (Número de Pod lançados pelo job)
   completionMode: "Indexed"        # Define um índice único para cada execução do Job.
   parallelism: 5                   # Número de execuções que podem ocorrer simultaneamente.
   activeDeadlineSeconds: 10        # Tempo máximo (em segundos) para o Job ser concluído.
