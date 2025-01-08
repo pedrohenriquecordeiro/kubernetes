@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config-map
+data:
+
+  # connection database config
+  database_name: mongodb
+  database_uri: mongodb://localhost:27017
+
+  # user interface config
+  font.title: Arial
+  background-color: red
+  theme.1: clean
+  theme.2: dark
+immutable: true
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    envFrom:
+    - configMapRef:  # environment variable
+        name: my-config-map
