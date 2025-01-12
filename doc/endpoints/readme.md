@@ -2,29 +2,27 @@
 
 O recurso Endpoints no Kubernetes desempenha um papel crucial ao conectar um Service aos Pods ou recursos externos associados. Ele define uma lista de endereços IP e portas que correspondem aos endpoints de um Service. Diferentemente dos Services, os Endpoints fornecem um mapeamento direto para os endereços de rede subjacentes.
 
-## O Que é um Endpoint?
+# O Que é um Endpoint?
 
 Os Endpoints no Kubernetes são objetos que armazenam os endereços IP e as portas dos recursos associados a um Service. Esses recursos podem ser Pods executando no cluster ou serviços externos fora do ambiente Kubernetes. Quando um Service é criado, o Kubernetes automaticamente gera um objeto Endpoints correspondente, que é atualizado dinamicamente com base no seletor do Service e no estado atual dos Pods.
 
-## Motivação
+# Motivação
 A principal motivação para criar um recurso Endpoints em vez de simplesmente confiar no Service é a necessidade de controle manual e flexibilidade adicional em cenários onde o comportamento padrão do Service não é suficiente ou adequado. Vamos explorar em profundidade os motivos e casos de uso em que Endpoints se tornam essenciais.
 
-### O Comportamento do Service
+## O Comportamento do Service
 
 No Kubernetes, um Service funciona como um ponto de acesso para os Pods, abstraindo a comunicação e fornecendo um único DNS estável, mesmo que os Pods subjacentes sejam escalados ou reiniciados. O Service gerencia dinamicamente seus próprios Endpoints com base nos Pods que correspondem ao seletor definido em sua configuração.
 
-###### Por exemplo:
-Se um Service tiver o seletor app: nginx, ele automaticamente criará um recurso Endpoints que aponta para todos os Pods que têm o rótulo app: nginx.
+**Por exemplo**: Se um Service tiver o seletor app: nginx, ele automaticamente criará um recurso Endpoints que aponta para todos os Pods que têm o rótulo app: nginx.
 
-## Quando o Recurso Endpoint é Necessário
+# Quando o Recurso Endpoint é Necessário
 
 Há casos em que o comportamento padrão do Service não atende às suas necessidades. Aqui estão os principais motivos para criar manualmente um recurso Endpoints:
 
-### Roteamento para Recursos Externos
+## 1) Roteamento para Recursos Externos
 
 Um Service padrão só pode direcionar tráfego para Pods dentro do cluster Kubernetes. No entanto, há cenários em que você precisa incluir IPs externos (por exemplo, um banco de dados externo, um serviço SaaS ou uma API de terceiros). Usar um recurso Endpoints permite adicionar esses IPs e associá-los a um Service Kubernetes.
 
-###### Exemplo:
 Você pode criar um Endpoints manual que inclua o IP de um banco de dados fora do cluster:
 ```yaml
 apiVersion: v1
@@ -38,7 +36,7 @@ subsets:
       - port: 5432         # Porta do banco de dados PostgreSQL.
 ```
 
-### Recursos Sem Selectors
+## 2) Recursos Sem Selectors
 
 O comportamento dinâmico do Service depende de selectors para associar Pods ao Service. No entanto, em alguns casos:
  - Os Pods podem não usar rótulos, ou os rótulos podem ser inconsistentes.
@@ -47,13 +45,12 @@ O comportamento dinâmico do Service depende de selectors para associar Pods ao 
 Nesse caso, você pode definir um Endpoints manual e vinculá-lo ao Service, ignorando completamente os selectors.
 
 
-###### Exemplo
+## Exemplo
 ---
 Este YAML ilustra como configurar um Endpoints manualmente e associá-lo a um Service quando não há selectors ou quando os Pods ou recursos não possuem rótulos consistentes. Vamos analisar cada parte:
 
-##### Definição de Pods
+#### Definição de Pods
 
-Pods 
 ```yaml
 apiVersion: v1                        # Define a versão da API utilizada.
 kind: Pod                             # Especifica que o recurso criado será um Pod.
@@ -81,7 +78,7 @@ spec:
 
 
 
-##### Definição de Endpoints
+#### Definição de Endpoints
 ```yaml
 apiVersion: v1                        # Define a versão da API utilizada.
 kind: Endpoints                       # Especifica que o recurso criado será um Endpoints.
@@ -100,7 +97,7 @@ subsets:                              # Subsets definem os IPs e portas dos Endp
 - Porta: Define que os recursos associados estão disponíveis na porta 80.
 
 
-##### Definição de Service
+#### Definição de Service
 ```yaml
 apiVersion: v1                        # Define a versão da API utilizada.
 kind: Service                         # Especifica que o recurso criado será um Service.
@@ -130,14 +127,13 @@ Objetivo: Este Service não usa selectors. Em vez disso, ele é associado ao End
  - 10.244.0.9 (Pod Apache).
  - 10.244.0.11 (Pod Nginx).
 
-##### Tutorial : Realizando uma Requisição ao DNS do Service no Kubernetes
+---
 
+### Tutorial : Realizando uma Requisição ao DNS do Service no Kubernetes
 
 Para verificar a resolução DNS e a conectividade com um Service no Kubernetes, podemos criar um Pod de teste e utilizar ferramentas como nslookup e curl. Este guia detalha os comandos, resultados esperados e a interpretação de cada etapa.
 
-Passo a Passo
-
-###### 1 - Criar um Pod de Teste com Debian
+#### 1 - Criar um Pod de Teste com Debian
 
 Crie um Pod temporário baseado na imagem Debian para executar os testes:
 ```
@@ -147,7 +143,7 @@ kubectl run -it --image debian pod-test
  - --image debian: Usa a imagem Debian como base.
  - pod-test: Nome do Pod criado.
 
-###### 2 - Instalar Ferramentas Necessárias
+#### 2 - Instalar Ferramentas Necessárias
 
 No terminal do Pod, atualize os pacotes e instale as ferramentas dnsutils (para nslookup) e curl:
 ```
@@ -156,7 +152,7 @@ apt update && apt install dnsutils -y && apt install curl -y
  - dnsutils: Inclui ferramentas para resolver nomes DNS, como nslookup.
  - curl: Ferramenta para realizar requisições HTTP.
 
-###### 3 - Verificar a Resolução DNS do Service
+#### 3 - Verificar a Resolução DNS do Service
 
 Execute o comando nslookup para resolver o nome DNS do Service:
 ```
@@ -171,7 +167,7 @@ Address: 10.96.0.10#53
 Name: endpoints-service.default.svc.cluster.local
 Address: 10.100.0.236
 ```
-Interpretação:
+##### Interpretação:
 1. Server: Mostra o endereço do servidor DNS interno do Kubernetes.
 2. Name: Nome completo do Service no formato FQDN:
     - endpoints-service: Nome do Service.
@@ -179,7 +175,7 @@ Interpretação:
     - svc.cluster.local: Sufixo DNS padrão no Kubernetes.
 3. Address: O endereço IP atribuído ao Service pelo Kubernetes (10.100.0.236 neste caso).
 
-###### Fazer uma Requisição HTTP ao Service
+#### Fazer uma Requisição HTTP ao Service
 
 Utilize o curl para realizar uma requisição HTTP ao DNS do Service:
 ```
@@ -191,10 +187,10 @@ root@test-eps:/# curl endpoints-service.default.svc.cluster.local
 <html><body><hl>It works!</hl></body></html>
 root@test-eps:/#
 ```
-Interpretação:
-  - A resposta HTML indica que a solicitação foi roteada com sucesso para um dos Endpoints associados ao Service (por exemplo, o Pod Apache ou Nginx no exemplo anterior).
+##### Interpretação:
+- A resposta HTML indica que a solicitação foi roteada com sucesso para um dos Endpoints associados ao Service (por exemplo, o Pod Apache ou Nginx no exemplo anterior).
 
-Explicação do Fluxo
+##### Explicação do Fluxo
  1. DNS Interno do Kubernetes:
 O Kubernetes fornece um servidor DNS interno que resolve o nome do Service para o IP do cluster atribuído ao Service.
  2. Resolução de DNS:
@@ -207,13 +203,13 @@ O curl envia uma requisição HTTP ao Service, que direciona o tráfego ao Endpo
 ---
 
 
-##### Configuração Estática e Controle Fino
+## 3) Configuração Estática e Controle Fino
 
 Os Services são dinâmicos por design. Eles monitoram os Pods correspondentes e atualizam automaticamente os Endpoints. Isso é ótimo para a maioria dos casos, mas pode não ser ideal quando você precisa de controle total ou configurações estáticas. Um recurso Endpoints manual oferece:
  - Consistência: Permite configurar manualmente IPs/portas, garantindo que o tráfego sempre vá para os destinos desejados.
  - Segurança: Limita quais recursos recebem tráfego, evitando seleção acidental de Pods indesejados.
 
-##### Multiport Applications
+## 4) Multiport Applications
 
 Se você precisa associar diferentes combinações de IPs e portas, o recurso Endpoints permite especificar isso manualmente, algo que nem sempre é possível com Services padrão.
 
@@ -233,11 +229,11 @@ subsets:
     ports:
       - port: 443
 ```
-##### Solução de Problemas e Testes
+## 5) Solução de Problemas e Testes
 
 Ao depurar ou testar aplicativos em um cluster Kubernetes, você pode querer substituir temporariamente o comportamento padrão de um Service. Criar e modificar manualmente um recurso Endpoints pode ser uma maneira rápida de redirecionar tráfego para destinos específicos sem alterar a configuração do Service.
 
-### Diferenças Fundamentais: Endpoints vs. Service
+# Diferenças Fundamentais: Endpoints vs. Service
 | **Aspecto**              | **Service**                                                                                 | **Endpoints**                                                                                       |
 |--------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | **Automação**             | Cria e gerencia automaticamente os Endpoints com base no seletor.                          | Configurado manualmente pelo usuário.                                                             |
@@ -246,7 +242,7 @@ Ao depurar ou testar aplicativos em um cluster Kubernetes, você pode querer sub
 | **Comportamento dinâmico**| Atualiza-se automaticamente com base no estado dos Pods.                                    | Estático; não muda automaticamente, mesmo que os Pods sejam alterados.                            |
 | **Casos de uso**          | Ideal para conectar Pods dentro do cluster.                                                | Usado para recursos externos, configurações estáticas ou quando os Pods não têm rótulos consistentes. |
 
-## Quando Não Criar Endpoints Manualmente
+# Quando Não Criar Endpoints Manualmente
 
 Você deve evitar criar Endpoints manuais quando:
 1. O comportamento padrão do Service atende às suas necessidades. Por exemplo, quando os Pods têm rótulos bem definidos e estão dentro do cluster.
