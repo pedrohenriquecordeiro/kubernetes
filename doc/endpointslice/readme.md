@@ -21,7 +21,7 @@ Os **EndpointSlices** são uma evolução do recurso tradicional **Endpoints** n
 
 ---
 
-## **YAML de Exemplo**
+## **YAML**
 
 Abaixo está um exemplo de um Service e dois EndpointSlices associados, demonstrando como o Kubernetes cria fatias de endpoints.
 
@@ -119,7 +119,7 @@ ports:                                # Define as portas associadas ao endpoint.
    kubectl describe endpointslice my-eps
    ```
 
-4. **Visualizar todos os EndpointSlices no cluster**:
+4) **Visualizar todos os EndpointSlices no cluster**:
    ```bash
    kubectl get endpointslices
    ```
