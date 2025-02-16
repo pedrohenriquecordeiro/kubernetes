@@ -16,4 +16,8 @@ Uma ferramenta de orquestração de containers
 8. [DaemonSet](./daemonset/readme.md)
 9. [Volume](./volumes/readme.md)
 10. [Service](./services/readme.md)
----
+11. Networking
+12. Job
+13. CronJobs
+14. ConfigMap
+15. Secret
