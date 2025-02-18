@@ -6,18 +6,20 @@ Uma ferramenta de orquestração de containers
 
 ## Conteudo
 
-1. [Arquitetura](./architecture/readme.md)
+1. [Architecture](./architecture/readme.md)
 2. [Pod](./pod/readme.md)
-3. [Resources](./resources/readme.md)
+3. [Resources - CPU Memory](./resources/readme.md)
 4. [Liveness Probe](./liveness_probes/readme.md)
 5. [Namespace](./namespaces/readme.md)
 6. [Deployment](./deployment/readme.md)
 7. [ReplicaSet](./replicaset/readme.md)
 8. [DaemonSet](./daemonset/readme.md)
-9. [Volume](./volumes/readme.md)
-10. [Service](./services/readme.md)
-11. Networking
-12. Job
-13. CronJobs
-14. ConfigMap
-15. Secret
+9. [Service](./services/readme.md)
+10. [Job](./job/readme.md)
+11. [CronJobs](./cronjob/readme.md)
+12. [ConfigMap](./configmap/readme.md)
+13. [Secret](./secret/readme.md)
+14. [Volume](./volumes/readme.md)
+15. [StatefulSet](./statefulset/readme.md)
+16. [Endpoint](./endpoints/readme.md)
+17. [EndpointSlice](./endpointslice/readme.md)
