@@ -44,4 +44,3 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 sudo apt update
 sudo apt install -y helm
 
-echo "✅ All tools installed successfully."
