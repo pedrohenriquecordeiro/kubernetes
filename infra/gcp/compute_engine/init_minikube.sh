@@ -2,6 +2,12 @@
 
 # inicia servidor minikube
 minikube start --driver=docker
+minikube start --nodes=2 --cpus=2 --memory=8192 --driver=docker
+
+minikube status
+kubect get nodes
+
+minikube ip
 
 # cria o deployment
 minikube ssh docker pull pedrojjesus/flask-kubernetes-project:latest &&
@@ -33,3 +39,6 @@ kubectl logs -f <pod-id>
 
 ## check do service executando
 curl http://192.168.49.2:30257 # url do service
+
+minikube stop
+minikube delete
